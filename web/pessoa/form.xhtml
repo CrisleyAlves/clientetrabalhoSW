@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo">Produtos</ui:define>
+        <ui:define name="conteudo">
+            <h:form id="form">
+                <p:messages/>
+                
+            <h2>Dados do pedido</h2>
+            
+            <b:panelGrid columns="6">
+                <b:inputText value="#{controlePessoa.objeto.nome}" label="Nome" />
+                <b:inputText value="#{controlePessoa.objeto.endereco}" label="Endereço" />
+                <b:inputText value="#{controlePessoa.objeto.cepDestino}" label="Cep Destino" mask="99999-999" required="true" />
+                <b:inputText value="#{controlePessoa.objeto.cepOrigem}" label="Cep Origem: " mask="99999-999" required="true"/>
+                <b:inputText value="#{controlePessoa.objeto.prazoEntrega}" label="Prazo" readonly="true" />
+                
+                <b:selectOneMenu value="#{controlePessoa.objeto.frete}" label="Frete" required="true">
+                    
+                    <f:selectItem itemLabel="Selecione..." itemValue="" />
+                    <f:selectItem itemLabel="SEDEX Varejo" itemValue="40010" />
+                    <f:selectItem itemLabel="SEDEX a Cobrar Varejo" itemValue="40045" />
+                    <f:selectItem itemLabel="SEDEX 10 Varejo" itemValue="40215" />
+                    <f:selectItem itemLabel="SEDEX Hoje Varejo" itemValue="40290" />
+                    <f:selectItem itemLabel="PAC Varejo" itemValue="41106" />
+                    
+                    
+                    <f:selectItem itemLabel="SEDEX à vista" itemValue="04014" />
+                    <f:selectItem itemLabel="SEDEX à vista pagamento na entrega" itemValue="04065" />
+                    <f:selectItem itemLabel="PAC à vista" itemValue="04510" />
+                    <f:selectItem itemLabel="PAC à vista pagamento na entrega" itemValue="04707" />
+                    <f:selectItem itemLabel="SEDEX 12 ( à vista e a faturar)*" itemValue="40169" />
+                    <f:selectItem itemLabel="SEDEX 10 (à vista e a faturar)*" itemValue="40215" />
+                    <f:selectItem itemLabel="SEDEX Hoje Varejo*" itemValue="40290" />
+                    
+                </b:selectOneMenu>
+            </b:panelGrid>
+            
+            <h2>Dados do produto</h2>
+            
+            <b:panelGrid columns="6">
+                
+                <b:inputText value="#{controlePessoa.objeto.altura}" label="Altura" required="true"/>
+                <b:inputText value="#{controlePessoa.objeto.peso}" label="Peso" required="true"/>
+                <b:inputText value="#{controlePessoa.objeto.comprimento}" label="Comprimento" required="true"/>
+                <b:inputText value="#{controlePessoa.objeto.diametro}" label="Diâmetro" required="true"/>
+                <b:inputText value="#{controlePessoa.objeto.largura}" label="Largura" required="true"/>
+                <b:inputText value="#{controlePessoa.objeto.valorDeclarado}" label="Valor declarado" required="true"/>
+                
+                <b:selectOneMenu value="#{controlePessoa.objeto.avisoRecebimento}" label="Aviso Recebimento">
+                    
+                    <f:selectItem itemLabel="Não" itemValue="N" />
+                    <f:selectItem itemLabel="Sim" itemValue="S" />
+                    
+                </b:selectOneMenu>
+                
+                <b:selectOneMenu value="#{controlePessoa.objeto.maoPropria}" label="Mão Própria" title="">
+                    
+                    <f:selectItem itemLabel="Não" itemValue="N" />
+                    <f:selectItem itemLabel="Sim" itemValue="S" />
+                    
+                </b:selectOneMenu>
+                
+                <b:selectOneMenu value="#{controlePessoa.objeto.formato}" label="Formato">
+                    
+                    <f:selectItem itemLabel="Caixa" itemValue="1" />
+                    <f:selectItem itemLabel="Rolo Prisma" itemValue="2" />
+                    <f:selectItem itemLabel="Envelope" itemValue="3" />
+                    
+                </b:selectOneMenu>
+                
+                <b:inputText value="#{controlePessoa.objeto.valorCompra}" label="Valor Compra" />
+                <b:inputText value="#{controlePessoa.objeto.valorFrete}"  label="Valor Frete" readonly="true" />
+                <b:inputText value="#{controlePessoa.objeto.valorTotal}" label="Valor Total" readonly="true" />
+                
+                </b:panelGrid>
+                
+                <h:commandButton value="Salvar"
+                                 action="#{controlePessoa.salvar()}"
+                                 disabled="#{controlePessoa.objeto.valorFrete == 0}"
+                                 />
+                
+                <p:commandButton    icon="ui-icon-pencil" 
+                                    action="#{controlePessoa.calcular()}"                                                             
+                                    value="Calcular"
+                                    process=":form"
+                                    update="form"
+                                    
+                                    />
+                
+            
+            
+        </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
+

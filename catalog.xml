@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?WSDL" uri="src/conf/xml-resources/web-service-references/CalcPrecoPrazo/wsdl/ws.correios.com.br/calculador/CalcPrecoPrazo.asmx.wsdl"/>
+    <system systemId="http://localhost:8080/ServicoTrabalhoSW/ServicoPessoaService?wsdl" uri="src/conf/xml-resources/web-service-references/ServicoPessoaService/wsdl/localhost_8080/ServicoTrabalhoSW/ServicoPessoaService.wsdl"/>
+    <system systemId="http://localhost:8080/ServicoTrabalhoSW/ServicoPessoaService?xsd=1" uri="src/conf/xml-resources/web-service-references/ServicoPessoaService/wsdl/localhost_8080/ServicoTrabalhoSW/ServicoPessoaService.xsd_1.xsd"/>
+</catalog>
